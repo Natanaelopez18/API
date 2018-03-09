@@ -1,0 +1,53 @@
+{
+  "name": "Complaint",
+  "plural": "Complaints",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "categoryId": {
+      "type": "number",
+      "required": true
+    },
+    "idLocation": {
+      "type": "number",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "enable": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "category": {
+      "type": "belongsTo",
+      "model": "Categorie",
+      "foreignKey": "categoryId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
